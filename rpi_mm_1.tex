@@ -122,9 +122,10 @@
 In this project part you will get more acquainted with a Flask web server and a Redis server. You will also learn how to build an application with multiple web servers. You will start to get an idea about microservices, and how to implement a microservice architecture for a big system.
 
 We still work with the Drone simulation system in this part, which is more or less the same as the one we looked at in Part 1, Drone simulation on Raspberry Pi, but we will add a Redis database to the system, and store longitude and latitude data in the database.
-You will use the code from  {\color{blue}\href{https://github.com/HaoruiPeng/InfoCom-LP2-Lab2}{GitHub repository} }in this instruction. As for Part 1, you are recommended to fork and clone from your own repository. Before you run the code, read the instruction and fill in with your own code in the places pointed out by comments. Otherwise you may get error messages.
+You will use the code from  {\color{blue}\href{https://github.com/rogerhenriksson/InfoCom-Drone-2-Microservices}{GitHub repository} }in this instruction. As for Part 1, you are recommended to fork and clone from your own repository. Before you run the code, read the instruction and fill in with your own code in the places pointed out by comments. Otherwise you may get error messages.
 
-If you use Raspberry Pi, you can replace the \verb!get_direction()! function with the one you created in Part 1, but keep \verb!SERVER_URL! the same as the file provided for this instruction. But you can also run this code on your own computer or lab computer. If you are using MAC OS and get problems with \verb!pip3!, read the Hint.\vspace{0.3cm}
+You can replace the \verb!get_direction()! function in \verb!pi_controller.py! with the one you created in Part 1 if you want, but keep \verb!SERVER_URL! the same as the file provided for this instruction. 
+
 
 \noindent{\bf Note: }\parbox[t]{14cm}{{You will get some questions marked in red in this instruction. You need to write down the answers and show to the TAs after you finish the lab.}}\vspace{0.2cm}
 
@@ -158,17 +159,17 @@ For our drone simulation application, the architecture is much simpler than Goog
 
 \section{Write your own}
 
-Some parts in the provided code are omitted. You need to fill in the code for the functions pointed out, and complete the functionalities required, as indicated by underlying comments. When you have completed all the code, you should be able to run the application by following the instructions in \verb!README.md! and get no error. The functionalities you should have with each server are:
+Some parts in the provided code are omitted. You need to fill in the code for the functions pointed out, and complete the functionality required, as indicated by underlying comments. When you have completed all the code, you should be able to run the application by following the instructions in \verb!README.md! and get no error. The functionalities you should have with each server are:
 \begin{itemize}
     \item The database frontend should receive the HTTP request from the drone controller. The request contains data about the drone movement along longitude and latitude. The server needs to update the drone's OSM coordinates with movement values and refresh the data in the database.
     \item The website frontend should keep reading the most recently recorded longitude and latitude data from the database, and display the location on the SVG map.
 \end{itemize}
 
 Before you start your web servers, remember to first check that the Redis server is running. If not, start it! If you are using your own computer or you reinstalled the operating system of your Raspberry Pi, you need to install Redis first. When you have all your web servers and the database running, you can control the drone on the website with your keyboard or the joystick, exactly the same way you did in the previous assignment, Drone simulation on Raspberry Pi. But the underlying system architecture has now changed. {\textcolor{red}{You need to show the TAs your completed task when you have completed all your code}}.
-\newpage
-\section{Hint for MAC OS}
-\label{sec:mac}
-If you run the web server on MAC OS, you may, depending on your OS version, get problems with \verb!pip3!. MAC has Python3 installed by default in the system, but not \verb!pip3!. There are several ways to install \verb!pip3! if you use the search phrase \textit{How to install pip3 on MAC OS}. The easiest one you find may be \verb!brew install python3!. The command \verb!brew! is the most popular package manager on MAC OS (like \verb!apt! in Debian), but when you install with \verb!brew!, you install the whole python3 again in your system, but in a different path. This path is not in your default system PATH, so your computer will not understand that you wants to use the newly installed python3. Therefore, you need to add the new path to your system PATH in \verb!~/.bash\_profile! or \verb!~/.zshrc!, then \verb!source! the changed file and you should be able to use the newly installed \verb!python3! and \verb!pip3!.
+%\newpage
+%\section{Hint for MAC OS}
+%\label{sec:mac}
+%If you run the web server on MAC OS, you may, depending on your OS version, get problems with \verb!pip3!. MAC has Python3 installed by default in the system, but not \verb!pip3!. There are several ways to install \verb!pip3! if you use the search phrase \textit{How to install pip3 on MAC OS}. The easiest one you find may be \verb!brew install python3!. The command \verb!brew! is the most popular package manager on MAC OS (like \verb!apt! in Debian), but when you install with \verb!brew!, you install the whole python3 again in your system, but in a different path. This path is not in your default system PATH, so your computer will not understand that you wants to use the newly installed python3. Therefore, you need to add the new path to your system PATH in \verb!~/.bash\_profile! or \verb!~/.zshrc!, then \verb!source! the changed file and you should be able to use the newly installed \verb!python3! and \verb!pip3!.
 
 % {\bf Hint 1: }\parbox[t]{14cm}{Check for updates to this document. Instructions may have been clarified in a more recent version. You can find the version number of the document on the very first page. The version number is the compile-date of the document in ISO-format~\cite{iso-date-time}.}\\
 % {\bf Hint 2: }\parbox[t]{14cm}{To avoid rewriting many commands, you can use the keys \texttt{arrow up} and \texttt{arrow down} to go back and forth between the commands that you just wrote.}\\
@@ -183,7 +184,7 @@ If you run the web server on MAC OS, you may, depending on your OS version, get 
 \begin{thebibliography}{10}
 \bibliographystyle{plain}
 
-\bibitem{MD} Google's microservice demo, \url{https://github.com/GoogleCloudPlatform/microservices-demo}, last accessed on 2021-11-12.
+\bibitem{MD} Google's microservice demo, \url{https://github.com/GoogleCloudPlatform/microservices-demo}, last accessed on 2025-01-07.
 
 % \bibitem{OSM} OpenStreetMap, \url{https://www.openstreetmap.org/#map=14/55.7059/13.2005}, last accessed on 2021-11-08.
 
