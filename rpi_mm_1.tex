@@ -142,9 +142,11 @@ A very typical example of this type of application is the microservice demo deve
     \label{fig:hipster}
 \end{figure}
 
-For our drone simulation application, the architecture is much simpler than Google's online boutique. You can see our architecture schematic in \Cref{fig:drone} (arrows indicate direction of requests). As you may remember, in the previous Cloud Services assignment, you had your Raspberry Pi send data directly to the Redis database on your VM in the cloud. In order to do that, you need to run your Redis server under \verb!unprotected-mode! on the VM. It is unsafe and not recommended in any kind of application development. So in this lab, when we introduce a Redis database to the system, we also add a database frontend, so that the database is hidden behind the frontend, and the client is not allowed to write data to the database directly. Instead, the database frontend will act as a data broker, receiving, filtering and passing along the \textit{accepted} data. In short, the data broker (the database frontend) is put in place to protect the database so that we can have some degree of control over who puts what data where in the database.
+For our drone simulation application, the architecture is much simpler than Google's online boutique. You can see our architecture schematic in \Cref{fig:drone} (arrows indicate direction of requests). 
+%As you may remember, in the previous Cloud Services assignment, you had your Raspberry Pi send data directly to the Redis database on your VM in the cloud. In order to do that, you need to run your Redis server under \verb!unprotected-mode! on the VM. It is unsafe and not recommended in any kind of application development. 
+For security reasons, in this lab, when we introduce a Redis database to the system, we also add a database frontend, so that the database is hidden behind the frontend, and the client is not allowed to write data to the database directly. Instead, the database frontend will act as a data broker, receiving, filtering and passing along the \textit{accepted} data. In short, the data broker (the database frontend) is put in place to protect the database so that we can have some degree of control over who puts what data where in the database.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=80mm]{drone-system-architecture.drawio.png}
     \caption{Application architecture of a drone simulation system.}
@@ -165,7 +167,9 @@ Some parts in the provided code are omitted. You need to fill in the code for th
     \item The website frontend should keep reading the most recently recorded longitude and latitude data from the database, and display the location on the SVG map.
 \end{itemize}
 
-Before you start your web servers, remember to first check that the Redis server is running. If not, start it! If you are using your own computer or you reinstalled the operating system of your Raspberry Pi, you need to install Redis first. When you have all your web servers and the database running, you can control the drone on the website with your keyboard or the joystick, exactly the same way you did in the previous assignment, Drone simulation on Raspberry Pi. But the underlying system architecture has now changed. {\textcolor{red}{You need to show the TAs your completed task when you have completed all your code}}.
+\noindent{\bf Hint: }\parbox[t]{14cm}{{The float() function can be useful here, which converts the specified value into a floating point number.\cite{fl}}}\vspace{0.2cm}
+
+\noindent Before you start your web servers, remember to first check that the Redis server is running. If not, start it! If you are using your own computer or you reinstalled the operating system of your Raspberry Pi, you need to install Redis first. When you have all your web servers and the database running, you can control the drone on the website with your keyboard or the joystick, exactly the same way you did in the previous assignment, Drone simulation on Raspberry Pi. But the underlying system architecture has now changed. {\textcolor{red}{You need to show the TAs your completed task when you have completed all your code}}.
 %\newpage
 %\section{Hint for MAC OS}
 %\label{sec:mac}
@@ -185,6 +189,9 @@ Before you start your web servers, remember to first check that the Redis server
 \bibliographystyle{plain}
 
 \bibitem{MD} Google's microservice demo, \url{https://github.com/GoogleCloudPlatform/microservices-demo}, last accessed on 2025-01-07.
+
+\bibitem{fl} Python float() Function, \url{https://www.w3schools.com/python/ref_func_float.asp}, last accessed on 2025-01-16.
+
 
 % \bibitem{OSM} OpenStreetMap, \url{https://www.openstreetmap.org/#map=14/55.7059/13.2005}, last accessed on 2021-11-08.
 
